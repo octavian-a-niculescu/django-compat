@@ -43,7 +43,8 @@ except ImportError:
     from six.moves._thread import get_ident  # noqa
 
 try:
-    from django.conf.urls import url, include, handler404, handler500
+    from django.conf.urls import include, handler404, handler500
+    from django.urls import re_path as url
 except ImportError:
     from django.conf.urls.defaults import url, include, handler404, handler500  # pyflakes:ignore
 
@@ -60,11 +61,11 @@ except ImportError:
 # smart_unicode -> smart_text
 # force_unicode -> force_text
 try:
-    from django.utils.encoding import smart_text
+    from django.utils.encoding import smart_str as smart_text
 except ImportError:
     from django.utils.encoding import smart_unicode as smart_text
 try:
-    from django.utils.encoding import force_text
+    from django.utils.encoding import smart_str as smart_text
 except ImportError:
     from django.utils.encoding import force_unicode as force_text
 
